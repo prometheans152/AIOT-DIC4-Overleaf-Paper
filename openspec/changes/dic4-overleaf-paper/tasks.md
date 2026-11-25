@@ -10,7 +10,7 @@
 - [x] 2.2 建立 v2_after/main.tex、references.bib：研究、方法、負向結果、限制
 - [x] 2.3 修訂前後對照與文獻來源層級註記
 - [x] 2.4 數字、LaTeX 基本結構、引用與結果分母通過自動核對（`scripts/verify_dic4_paper.py`，exit 0）
-- [x] 2.5 產出 ZIP，Overleaf 真正編譯、檢查 PDF 與錯誤（2026-11-25 更新：IEEE 雙欄共 4 頁，第 2 頁的 Article Summary Table 橫跨兩欄，無橫向頁）
+- [x] 2.5 產出 ZIP，Overleaf 真正編譯、檢查 PDF 與錯誤（2026-11-25 更新：IEEE 雙欄**剛好 5 頁**，第 2 頁 Article Summary Table 橫跨兩欄；新增分析與未來評估方法）
 
 ## 3. 工作流程
 - [x] 3.1 建立 DIC4 OpenSpec proposal、design、specs、tasks

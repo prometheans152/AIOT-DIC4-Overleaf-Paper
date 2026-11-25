@@ -15,7 +15,7 @@
 | 成品 | 內容與狀態 |
 | --- | --- |
 | `paper/dic4/v1_before/` | 本輪產生的精簡論文初稿與 BibTeX，非歷史投稿檔 |
-| `paper/dic4/v2_after/` | 修訂版 IEEE Conference 雙欄 LaTeX／BibTeX 與 2026-11-25 Overleaf 產生的 4 頁 PDF；第 2 頁跨雙欄 Article Summary Table |
+| `paper/dic4/v2_after/` | 修訂版 IEEE Conference 雙欄 LaTeX／BibTeX 與 2026-11-25 Overleaf 產生的 **5 頁 PDF**；第 2 頁跨雙欄 Article Summary Table |
 | `paper/dic4/v2_after_overleaf.zip` | 可重新匯入 Overleaf 的 LaTeX 專案包 |
 | `docs/dic4/REVISION_COMPARISON.md` | 修改前與修改後差異說明 |
 | `openspec/changes/dic4-overleaf-paper/` | OpenSpec proposal、design、specs、tasks |
@@ -28,7 +28,7 @@
 | `A2Z outline example(1).pdf` | 140798 | `777386D58818577471BB02067CD01B7B14D24DC55B497A6D667FEBDB2C207EF4` |
 | `FMPA 專題簡報解析.pdf` | 196944 | `457A52540F5DC43D080C021408289B0A33458FA91570D78E69A4377958715FEC` |
 
-最新 Overleaf PDF：388870 bytes、4 頁、SHA-256 `973421FAB97CD64A3489726E3C25D3737A14CDF84E654506AA7D5A89624F2910`。採 IEEEtran Conference **雙欄內文**；第 2 頁上方以 `table*` 橫跨兩欄呈現 Section II 結尾的 Article Summary Table（八欄、八筆原 DIC3 文獻整理），Section III 從表格下方開始。編譯完成、文字不超出 PDF 媒體框，四頁皆為直式，無須橫向頁。此 PDF 不代表新模型實驗或正式投稿。
+最新 Overleaf PDF：**401363 bytes、5 頁**、SHA-256 `2A85BC945E2515E633981901AD274C73A73158C4B40424E5279AE42FB10D7C7E`。採 IEEEtran Conference **雙欄內文**；第 2 頁上方以 `table*` 橫跨兩欄呈現 Section II 結尾的 Article Summary Table（八欄、八筆原 DIC3 文獻整理），Section III 從表格下方開始。增加了原封存公開市場三種蔬菜的各別 macro-F1／樣本數、資料與時間可比性、真店配對評估與 Agent 失敗情境驗收設計；沒有新增模型訓練或憑空加入結果。Overleaf 實際編譯成功，5 頁都有正文或參考文獻，字詞不超出 PDF 媒體框，皆為直式頁面。此 PDF 不代表正式投稿或模型新實驗。
 
 ## 驗收與限制
 

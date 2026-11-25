@@ -10,7 +10,7 @@
 | 路徑 | 說明 |
 | --- | --- |
 | `paper/dic4/v1_before/` | 2026-11-25 本輪重建的精簡論文初稿；非歷史投稿版本 |
-| `paper/dic4/v2_after/` | 修改後 IEEE Conference 雙欄 LaTeX／BibTeX 與已由 Overleaf 編譯的 4 頁 PDF；Section II 結尾的 Article Summary Table 橫跨雙欄 |
+| `paper/dic4/v2_after/` | 修改後 IEEE Conference 雙欄 LaTeX／BibTeX 與已由 Overleaf 編譯的 **5 頁 PDF**；Section II 結尾的 Article Summary Table 橫跨雙欄 |
 | `paper/dic4/v2_after_overleaf.zip` | 可直接匯入 Overleaf 的四檔原始碼 ZIP（含 before 版本） |
 | `docs/dic4/REVISION_COMPARISON.md` | 修改前／後對照 |
 | `FMPA 專題簡報解析.pdf`（Repo 根目錄） | 使用者提供的 FMPA 簡報解析原始 PDF（2 頁） |

@@ -5,7 +5,7 @@
 - `v1_before/main.tex` + `references.bib`：初始精簡稿，用作修改前基準。
 - `v2_after/main.tex` + `references.bib`：修改後學術論文草稿（研究問題、架構、公開回測負向結果、Agent 邊界、真店驗證計畫）。
 - `v2_after_overleaf.zip`：已成功匯入 Overleaf、包含修改前對照稿的四檔 ZIP（同時可供重建）。
-- `v2_after/FMPA_DIC4_Overleaf.pdf`：2026-11-25 從實際 Overleaf 重新編譯後下載，4 頁 IEEE Conference 雙欄。第 2 頁上方為跨越兩欄的 Article Summary Table（8 欄、8 筆），整份檔案皆為直式頁面，已檢查沒有字詞超出 PDF 頁框，編譯成功。
+- `v2_after/FMPA_DIC4_Overleaf.pdf`：2026-11-25 從實際 Overleaf 重新編譯後下載，**5 頁 IEEE Conference 雙欄**。第 2 頁上方為跨越兩欄的 Article Summary Table（8 欄、8 筆）；新增依封存資料核對的各蔬菜績效、時間可比性與前瞻驗證細節，沒有重訓或虛構實驗。已逐頁檢查 PDF 邊界，編譯成功。
 - 文稿的唯一量化來源：`docs/midterm/public_test_results.json`（相對於 repo 根目錄）。
 
 雲端已建立：`https://www.overleaf.com/project/6b06bd77157dbfcfac3cf914`，使用 pdfLaTeX 已成功重編。要重建另一份可在 Overleaf /project 按 Create a new project → Existing project (.zip)，選擇 `v2_after_overleaf.zip`。BibTeX 參考資料會隨專案編譯。論文標題與團隊名稱是課程草稿，**沒有正式期刊投稿**。不要將模型包、私人文件或服務憑證放入 ZIP。整體驗收與待辦：`docs/dic4/ACCEPTANCE_REPORT.md`。

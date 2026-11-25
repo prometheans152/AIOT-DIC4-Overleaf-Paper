@@ -10,7 +10,7 @@
 | Related Work | 只舉部分文獻 | 第二節最後加入跨雙欄 Article Summary Table（Ref./Year/Problem/AI Method/Domain Knowledge/Dataset/Findings/Limitation，共 8 筆）；使用 IEEE Conference 雙欄、不用橫向頁；保留文獻證據層級，不跨資料集硬比 |
 | Method | 只寫 A 公式 | 資料時間、防洩漏、A/B 公式、相容性與 fallback |
 | Agent | 簡單描述 | 標示現存兩工具、Web B 不在 MCP、工具錯誤不可亂猜 |
-| Results | 數字與基線簡述 | 表格附 n／macro-F1／return MAE／上漲 recall、明示低於基線 |
+| Results | 數字與基線簡述 | 表格附 n／macro-F1／return MAE／上漲 recall、明示低於基線；另依封存 JSON 加上三品項分項 macro-F1 與類別不平衡分析，區分既有數據與未來評估 |
 | Evaluation | 未來要驗證 | 同店同品項到期配對、凍結預測、缺值和失敗情境 |
 | Submission | 本機初稿 | Overleaf 可匯入 ZIP，需雲端編譯與驗證 |
 

@@ -30,4 +30,12 @@ DIC4 工作包 SHALL 具備兩個可編輯 LaTeX 版本，含 `main.tex` 及同�
 - **WHEN** 檢查修訂稿 LaTeX 與 Overleaf PDF
 - **THEN** 具備八欄、R01–R07 和 H17 共八筆相關研究或應用來源
 - **AND** 使用 IEEEtran Conference 雙欄排版與 `table*`，表格在第二節結尾橫跨兩欄、先於第三節，不使用橫向頁面，且不與內文重疊
+
+### Requirement: IEEE 雙欄成品剛好五頁
+本輪修訂後 PDF SHALL 由 IEEEtran Conference 產出剛好五頁，保留第二節結尾的跨雙欄 Article Summary Table。延伸內容 SHALL 以原封存評估的分項分析、時間資料邊界與尚待驗證的同店配對測試為主，不可填入虛構實驗或藉字體放大灌頁。
+#### Scenario: 驗證 PDF 與研究限制
+- **WHEN** 使用 Overleaf 編譯並以 PDF 頁面檢查
+- **THEN** PDF 共五頁，每頁有內容，版面不裁切，表格完整位於雙欄頁
+- **AND** 新增之各蔬菜樣本數與 macro-F1 對應 `docs/midterm/public_test_results.json` 的 `by_crop`
+- **AND** 不將未完成的真店驗證或 Agent 情境測試標為完成。
 - **AND** 引用都能在 BibTeX 中找到，未核實的方法、結果或限制標示其資訊來源。

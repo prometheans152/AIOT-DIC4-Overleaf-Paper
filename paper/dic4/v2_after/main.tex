@@ -95,6 +95,11 @@ The direction is down if $r_h<-0.05$, flat if $-0.05\leq r_h\leq0.05$, and up if
 
 The frozen first-version model chose Random Forest regression for seven-day returns and histogram gradient boosting regression for fourteen-day returns. We report its existing test without retraining, changing thresholds, or using test outcomes to select a new model \cite{fmpafrozen}.
 
+\subsection{Evaluation units and temporal comparability}
+The experimental unit is a market--product--origin-date record, with the horizon defining a separate future endpoint. A row is evaluable only when both endpoint quotations are positive and the target label has matured. Thus, the $h=7$ and $h=14$ test sets cannot be treated as identical cohorts, and the number of public-market observations is not the number of consumers or shops. A quote published late may be useful for historical analysis but must not be substituted into an earlier prediction's feature snapshot. To preserve the intended deployment question, all features for an origin date must be computed from information available before the decision is made.
+
+Baseline choice depends on the measured outcome. For direction classification, the momentum comparator continues the recent change; for magnitude, the no-change comparator predicts zero relative return. A flat-only classifier is also informative about class imbalance, but high accuracy on a predominantly flat series is not evidence of reliable upward warnings. A fair same-sample comparison keeps the test rows and class thresholds fixed for a given horizon. This protocol describes the frozen public-market evaluation, not an evaluation of privately observed store transactions.
+
 \subsection{From a market return to a shop scenario}
 Let $\widehat r_h(t)$ denote the engine's estimated public-market relative change. Mode A calculates a \emph{scenario}, not a validated prediction of a shop's true price:
 \begin{equation}
@@ -137,6 +142,27 @@ Up-class recall & 16/158 (10.1\%) & 23/268 (8.6\%)\\
 
 At both horizons the selected model is worse than the simple momentum comparator in macro-F1, and worse than the unchanged-return comparator in MAE. The low up-class recall is particularly unsuitable for an unqualified rising-price warning. These MAEs measure \emph{relative public-market return}, not New Taiwan dollar error on shop transactions. The results neither demonstrate store-price accuracy nor justify claims of user savings. Using multiple markets to aggregate predicted returns would also need separate evaluation on an appropriate held-out scope.
 
+\subsection{Class imbalance and crop-level variation}
+The test labels are not evenly distributed. At seven days, $1{,}803$ of $2{,}085$ valid examples are flat, whereas only $158$ are up and $124$ are down. At fourteen days, $1{,}479$ of $1{,}859$ examples are flat, compared with $268$ up and $112$ down. These are the frozen test label counts, not an estimate of the probability that a shopper will encounter an increase. Macro-F1 weights the three classes equally, so it exposes errors that a majority-class accuracy can conceal. The flat-only macro-F1 values are $0.3092$ and $0.2954$, respectively; neither should be presented as a useful rising-price detector.
+
+\begin{table}[!t]
+\centering
+\caption{Frozen model direction scores by crop. Each cell uses that crop's own valid public-market test examples.}
+\label{tab:bycrop}
+\small
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
+\toprule
+Crop & 7-day $(n,\mathrm{F1})$ & 14-day $(n,\mathrm{F1})$\\
+\midrule
+Bok choy & $(703,0.3916)$ & $(628,0.3732)$\\
+Cabbage & $(613,0.3203)$ & $(544,0.3072)$\\
+Sponge gourd & $(769,0.4474)$ & $(687,0.4493)$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:bycrop} shows that the aggregate score is not representative of every vegetable. On the held-out public-market samples, cabbage has the lowest crop-specific macro-F1 at both horizons, while sponge gourd has the highest. The cropped sample sizes also differ by horizon because the required valid endpoint changes. These values are descriptive slices of the original test, not a new independent experiment or evidence that one crop is intrinsically easier to predict. Before deployment, any prospective comparison should report uncertainty and coverage by product rather than pooling away poorly performing cases.
+
 \section{Prospective Validation Plan}
 To answer RQ2, the next study must \emph{freeze} both A/B forecasts at day $t$ with the exact data snapshot, model version, market scope, shop identifier, item specification, unit and source timestamps. Real observations of that same shop and product on $t+7$ and $t+14$ must be collected subsequently. Missing or noncomparable items should be marked unavailable rather than replaced with a market average.
 
@@ -144,8 +170,25 @@ Comparisons should be paired on the \emph{same valid cases}: A versus B versus s
 
 For RQ3, construct tool-call tests with a missing price, missing unit, unsupported per-head unit, invalid date, stale public quote, empty model output, tool timeout and prompt to fabricate a price. Test both the structured tool result and the assistant's explanation. Selected functioning calls are not substitutes for a measured failure rate across these cases.
 
+\subsection{Prospective matched-shop observation protocol}
+A future field study should first define a canonical observation record: anonymized shop identifier, product and grade, unit, observed price, observation timestamp and the source of the quote. Each enrolled shop--product pair needs an origin observation at $t$ and a later observation of the \emph{same specification} at the predetermined endpoint. If a shop changes its packaging, discounts a bundle or reports a per-head price without weight, the record should be flagged as noncomparable instead of silently converted. An absent endpoint is a missing outcome, not evidence that the forecast was correct.
+
+The prediction log should be immutable after the origin day: store the A/B values, the selected public-market history cutoff, model checksum, rule version, input mode and fallback reason. This separates data collection from retrospective selection of successful cases. A comparison between A and B is meaningful only on the intersection of their eligible paired examples. A second analysis may compare A with shop-price persistence over a larger cohort, but its sample size and missingness must be reported separately. Publishing both the enrollment count and valid-pair count prevents a high score on a small subset from being mistaken for broad consumer coverage.
+
+\subsection{Evaluation endpoints and decision rule}
+The primary future store-price endpoint should be the absolute difference between the frozen forecast and the subsequently observed shop price, evaluated separately at seven and fourteen calendar days. Directional scores can be calculated with a prespecified tolerance, provided the calculation uses the same shop-price truth and does not import public-market labels as a substitute. For paired A/B cases, report the signed per-case difference in absolute error together with an interval estimated by a method appropriate to repeated observations from the same shop. A method that assumes all daily observations are independent would risk overstating precision. The decision rule for claiming a B-mode benefit should be fixed before observing endpoints; no new threshold or the coefficient $0.3$ should be chosen using the final test cases.
+
+Operational coverage is a separate outcome. Record the fraction of requests that pass validation, produce an attributable quote and return an explanation without unsupported numeric additions. A model could improve return MAE yet fail a user if the tool omits its observation date, unit or public-market scope. Conversely, an agent may reduce the number of steps needed to request a scenario without improving the predictive model. Forecast quality, coverage, correctness of tool use and user comprehension therefore require separate reporting; none is inferred from the existing public-market scores.
+
+\subsection{Failure-case acceptance criteria}
+The test harness should compare a machine-readable response against an expected action before examining the assistant's prose. Missing or nonpositive store prices must be rejected; an unsupported per-bunch unit must request the missing weight rather than fabricate a conversion. A date or market with unavailable public history must return an explicit unavailable state, while a stale but usable quotation should preserve its true observation date with a warning. A failed forecasting service must not trigger an LLM-generated replacement number. If B-mode eligibility fails because the previous quote is from another shop or lies outside the permitted interval, the response should state that only A is available and record the fallback reason.
+
+To assess RQ3, proposed test counts should include both ordinary and adversarial prompts: missing fields, inconsistent units, an attempt to override the frozen forecast, fabricated sources and service timeouts. For each test, evaluate schema validity, correct tool selection, numerical fidelity to the returned tool output, provenance completeness and whether the agent disclosed the limitation in human-readable language. These are planned acceptance criteria; comprehensive agent reliability results have not yet been collected.
+
 \section{Threats to Validity and Discussion}
 The dataset measures public retail markets, not specific stores; seller quality and promotions are unobserved. Forecasting models may underreact to rare changes, as suggested by the low rising-price recall. Publication delays, changing item coverage, future distribution shifts and market pooling introduce separate uncertainties. Strong baselines must remain visible even if future work reports new models. An agent may improve accessibility without improving predictive skill; these claims must be evaluated separately.
+
+Selection bias is also possible when shop observations are collected voluntarily. Shops that consistently provide comparable prices may differ from those that leave the study, and produce prices may be affected by local availability and quality. Reporting only successfully matched observations without the excluded population would limit generalizability. The anonymous A-mode tool is not interchangeable with the Web B-mode interface, and no test of the latter can be attributed to the former. Finally, the related-work table combines theses, product descriptions, a news article, a repository and course slides; those source types offer different levels of evidence and cannot justify causal claims about model superiority.
 
 \section{Conclusion}
 We present a source-traceable domain-agent prototype for 7-/14-day shop-price \emph{scenarios} and its frozen public-market evidence. The selected regressors fail to beat relevant simple baselines on the reported public metrics, while individual-shop accuracy and B-mode utility have not yet been measured. The main next step is a preregistered matched-shop prospective test, together with robust tool-failure evaluation. This document is a \emph{working paper}, not an accepted publication or a claim of established consumer benefit.

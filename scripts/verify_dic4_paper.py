@@ -40,7 +40,8 @@ def main() -> None:
             version,
         )
 
-    data = json.loads(EVAL.read_text(encoding="utf-8"))["horizons"]
+    frozen = json.loads(EVAL.read_text(encoding="utf-8"))
+    data = frozen["horizons"]
     revised = (PAPER / "v2_after" / "main.tex").read_text(encoding="utf-8")
     for h, expected_n, expected_up in (("h=7", 2085, 16), ("h=14", 1859, 23)):
         item = data[h]
@@ -68,6 +69,25 @@ def main() -> None:
             "up_true_positive": expected_up,
             "up_support": int(selected["direction"]["per_class"]["up"]["support"]),
         }
+
+    assert r"\subsection{Class imbalance and crop-level variation}" in revised
+    assert r"\subsection{Prospective matched-shop observation protocol}" in revised
+    assert r"\subsection{Failure-case acceptance criteria}" in revised
+    crop_results = {}
+    for crop in ("bok_choy", "cabbage", "sponge_gourd"):
+        result_7 = frozen["by_crop"][f"h=7|{crop}"]
+        result_14 = frozen["by_crop"][f"h=14|{crop}"]
+        assert (
+            f"$({result_7['n']},{result_7['macro_f1']:.4f})$" in revised
+        ), f"7-day crop metrics differ from frozen evidence: {crop}"
+        assert (
+            f"$({result_14['n']},{result_14['macro_f1']:.4f})$" in revised
+        ), f"14-day crop metrics differ from frozen evidence: {crop}"
+        crop_results[crop] = {
+            "h=7": {"n": result_7["n"], "macro_f1": result_7["macro_f1"]},
+            "h=14": {"n": result_14["n"], "macro_f1": result_14["macro_f1"]},
+        }
+    results["by_crop"] = crop_results
 
     for marker in ("\\section{Introduction}", "\\section{Related Work", "\\section{Architecture", "\\section{Frozen", "\\section{Prospective", "\\section{Conclusion}"):
         assert marker in revised, f"missing section: {marker}"
