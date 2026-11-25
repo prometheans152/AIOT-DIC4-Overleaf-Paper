@@ -71,6 +71,24 @@ def main() -> None:
 
     for marker in ("\\section{Introduction}", "\\section{Related Work", "\\section{Architecture", "\\section{Frozen", "\\section{Prospective", "\\section{Conclusion}"):
         assert marker in revised, f"missing section: {marker}"
+    related_start = revised.index(r"\section{Related Work and Domain Constraints}")
+    next_section = revised.index(r"\section{Architecture and Methods}")
+    related = revised[related_start:next_section]
+    assert r"\subsection{Article Summary Table}" in related, "missing Article Summary Table at end of Section II"
+    assert r"\begin{tabularx}" in related and r"\end{tabularx}" in related
+    assert r"\FloatBarrier" in related, "table may float outside Section II"
+    expected_columns = (
+        "Ref. & Year & Problem & AI Method & Domain Knowledge & Dataset & Findings & Limitation"
+    )
+    assert expected_columns in related, "eight required summary-table columns are missing"
+    for ref_id in ("R01", "R02", "R03", "R04", "R05", "R06", "R07", "H17"):
+        assert re.search(rf"(?m)^{ref_id}\s+\\cite\{{", related), f"missing related-work row {ref_id}"
+    results["article_summary"] = {
+        "location": "end of Section II, before Architecture and Methods",
+        "columns": 8,
+        "rows": 8,
+        "citations_present": True,
+    }
     print(json.dumps({"status": "STATIC_CHECK_PASS", "scope": "text/bibliography/frozen-numbers only", "results": results}, ensure_ascii=False, indent=2))
 
 

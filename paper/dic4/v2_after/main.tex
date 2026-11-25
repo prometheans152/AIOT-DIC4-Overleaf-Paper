@@ -3,7 +3,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,microtype}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,microtype,tabularx,placeins,pdflscape,caption}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 \title{From Public Market Averages to Shop-Price Scenarios:\\ A Reproducible 7- and 14-Day Forecasting-Agent Prototype}
 \author{Fresh Market Price Forecast Agent (FMPA) Project Team\\\small AIoT and Data Analytics Course Project}
@@ -26,6 +28,37 @@ Rather than calling a tree-based regression model novel, we emphasize a measurab
 Prior Taiwanese vegetable-price studies compared statistical forecasting with neural approaches in wholesale settings \cite{chen2024}. Work on weekly cabbage forecasts considered the informational value of private supply-chain records \cite{lee2015}; a separate indexed study addressed nonstationary retail price behaviour \cite{lin2017}. Our literature notes accessed abstracts or bibliographic records for these theses, not verified full experimental reproductions. Different markets, outcomes, horizons and evaluation metrics prohibit direct cross-study performance rankings.
 
 A public market average is a distribution-level observation, not an individual transaction. Conversion between prices per Taiwanese \emph{jin} and per kilogram is possible because one jin equals $0.6$ kilograms; per-head and per-bunch amounts cannot be converted without product weight. In the original dataset contract, a quoted zero indicates a missing quotation, not free produce. Comparing a user's present price with stale public observations requires preserving each observation's real date, rather than moving the user's deadline to the data date.
+
+\subsection{Article Summary Table}
+Table~\ref{tab:article-summary} summarizes the research and product evidence underlying our gap analysis. Studies on wholesale prediction, retail market variability, and market information tools have different targets and cannot be ranked by comparing metrics across datasets. UNKNOWN marks details not confirmed by the inspected abstract, news report, repository, product page, or course presentation.
+
+\begin{landscape}
+\thispagestyle{plain}
+\centering
+\captionsetup{hypcap=false}
+\captionof{table}{Article Summary Table: AI methods and domain knowledge in related work.}
+\label{tab:article-summary}
+\setlength{\tabcolsep}{3.2pt}
+\renewcommand{\arraystretch}{1.28}
+\fontsize{9.5}{11.3}\selectfont
+\begin{tabularx}{\linewidth}{@{}P{0.063\linewidth}P{0.046\linewidth}P{0.12\linewidth}P{0.114\linewidth}P{0.135\linewidth}P{0.145\linewidth}YY@{}}
+\toprule
+Ref. & Year & Problem & AI Method & Domain Knowledge & Dataset & Findings & Limitation\\
+\midrule
+R01 \cite{chen2024} & 2024 & Wholesale vegetable prices & ARIMA, ETS, TDNN, LSTM & Seasonality and wholesale history & Taiwan wholesale, 2012--2022 & Abstract reports model comparisons & Abstract only; not same-shop 7/14-day tests\\
+R02 \cite{lee2015} & 2015 & Weekly cabbage wholesale prices & Time-series models with/without private data & Supply-chain records & Kaohsiung wholesale and private records; 66 weeks & Abstract indicates value from private data & No consumer store prices; detailed metrics unverified\\
+R03 \cite{lin2017} & 2017 & Retail-market price patterns & Hilbert--Huang transform & Nonstationary retail prices & Kaohsiung public retail markets & Indexed abstract studies variable trends & Full text and detailed metrics unverified\\
+R04 \cite{agri2018} & 2018 & Retail-channel price estimates & Invoice analytics; model details unknown & Wholesale-to-retail transmission & Reported 2.9 billion invoices and quotations & News report describes retail-oriented analysis & News account; no same-store forecast validation\\
+R05 \cite{cabbage2026} & 2026 & Market quotations and AI trends & AI claimed; model unknown & Supply, weather, conversions & Wholesale data described on website & Product page advertises trends & Site only; horizons/accuracy unverified\\
+R06 \cite{farmapp2026} & 2026 & Comparing purchase and market prices & Unit conversion/comparison & Unit and retail-price differences & Commodity prices described in store listing & Listing supports a shop-price input scenario & Store listing only; future-price evaluation unknown\\
+R07 \cite{nchudm2025} & 2025 & Weather--price data mining & Decision-tree methods & Climate--price relationships & Taiwan prices and weather (repository) & Repository describes mining workflow & Same-store horizon results not verified\\
+H17 \cite{team172025} & 2025 & Five-day market forecasts & LightGBM & Wholesale trades, weather, supply & 2018--2024 wholesale/weather slides & Slides report $R^2$, RMSE and MAE & Slides only; not reproduced; different target\\
+\bottomrule
+\end{tabularx}
+\par\vspace{9pt}
+{\raggedright\fontsize{9.0}{10.5}\selectfont\emph{Evidence scope:} R01--R03: abstract/index; R04: news; R05--R06: product pages; R07: repository; H17: course slides. Missing details are not evidence of absent features.\par}
+\end{landscape}
+\FloatBarrier
 
 \section{Architecture and Methods}
 \subsection{Workflow and system boundary}

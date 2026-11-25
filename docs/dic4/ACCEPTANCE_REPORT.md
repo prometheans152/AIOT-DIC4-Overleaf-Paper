@@ -15,7 +15,7 @@
 | 成品 | 內容與狀態 |
 | --- | --- |
 | `paper/dic4/v1_before/` | 本輪產生的精簡論文初稿與 BibTeX，非歷史投稿檔 |
-| `paper/dic4/v2_after/` | 修訂版 LaTeX／BibTeX 與 2026-11-25 Overleaf 產生的 5 頁 PDF |
+| `paper/dic4/v2_after/` | 修訂版 LaTeX／BibTeX 與 2026-11-25 Overleaf 產生的 7 頁 PDF；第 3 頁橫式 Article Summary Table |
 | `paper/dic4/v2_after_overleaf.zip` | 可重新匯入 Overleaf 的 LaTeX 專案包 |
 | `docs/dic4/REVISION_COMPARISON.md` | 修改前與修改後差異說明 |
 | `openspec/changes/dic4-overleaf-paper/` | OpenSpec proposal、design、specs、tasks |
@@ -28,7 +28,7 @@
 | `A2Z outline example(1).pdf` | 140798 | `777386D58818577471BB02067CD01B7B14D24DC55B497A6D667FEBDB2C207EF4` |
 | `FMPA 專題簡報解析.pdf` | 196944 | `457A52540F5DC43D080C021408289B0A33458FA91570D78E69A4377958715FEC` |
 
-原修訂稿 Overleaf PDF：238258 bytes、5 頁、SHA-256 `71A872F86BE2F4288AB7C5707626700DCFAB4604F27D9E999E3910A11F200B61`。先前已實際逐頁檢視，未見文字越界；第 5 頁為參考文獻。新 repo 本身不等於重新跑過模型或完成學術審稿。
+最新 Overleaf PDF：304680 bytes、7 頁、SHA-256 `54010327F04990AB20E495A485A000B1AE7E10C11BF90A464D60B5B12728E9A5`。第 3 頁橫式 Article Summary Table 位於第二節結尾，包含八欄、八筆原 DIC3 文獻整理；編譯完成（0 errors, 0 warnings），已檢查文字不超出 PDF 媒體框，且第 4 頁才開始第三節。此 PDF 不代表新模型實驗或正式投稿。
 
 ## 驗收與限制
 

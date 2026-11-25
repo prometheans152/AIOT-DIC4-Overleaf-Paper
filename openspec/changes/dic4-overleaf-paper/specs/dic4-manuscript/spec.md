@@ -23,3 +23,11 @@ DIC4 工作包 SHALL 具備兩個可編輯 LaTeX 版本，含 `main.tex` 及同�
 - **WHEN** 檢查修訂稿
 - **THEN** RQ1 已有公開測試、RQ2 尚無店價到期、RQ3 尚缺全面 Agent 驗證分明
 - **AND** B 的 alpha=0.3 為固定未訓練規則。
+
+### Requirement: 第二節結尾必須具備 Article Summary Table
+修訂稿 SHALL 在 Section II Related Work 最後、Section III Proposed Scheme／Architecture 之前提供八欄 Article Summary Table，欄位依序為 Ref.、Year、Problem、AI Method、Domain Knowledge、Dataset、Findings、Limitation。每筆文獻的證據層級 SHALL 明示，不得將只讀摘要、商店頁或課堂簡報當成完整實驗驗證。
+#### Scenario: 查核章節與表格
+- **WHEN** 檢查修訂稿 LaTeX 與 Overleaf PDF
+- **THEN** 具備八欄、R01–R07 和 H17 共八筆相關研究或應用來源
+- **AND** 表格先於第三節，橫式頁面完整呈現，不與內文重疊
+- **AND** 引用都能在 BibTeX 中找到，未核實的方法、結果或限制標示其資訊來源。
