@@ -21,7 +21,7 @@
 | `openspec/changes/dic4-overleaf-paper/` | OpenSpec proposal、design、specs、tasks |
 | `docs/midterm/public_test_results.json` | 既有公開市場回測封存結果，不是本輪訓練產生 |
 | `design.md`、`docs/dic3/DIC3_PROPOSAL_REFACTOR.md` | 供論文與 OpenSpec 對照的既有設計／提案參考，非新產品程式碼 |
-| `docs/dic4/references/` | 使用者提供的 2 份 PDF 原檔，SHA-256 如下 |
+| Repo 根目錄：`A2Z outline example(1).pdf`、`FMPA 專題簡報解析.pdf` | 使用者提供的 2 份 PDF 原檔，SHA-256 如下 |
 
 | PDF | bytes | SHA-256 |
 | --- | ---: | --- |

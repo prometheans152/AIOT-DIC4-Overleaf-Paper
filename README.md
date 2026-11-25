@@ -13,8 +13,8 @@
 | `paper/dic4/v2_after/` | 修改後 LaTeX 來源、BibTeX 與已由 Overleaf 編譯的 5 頁 PDF |
 | `paper/dic4/v2_after_overleaf.zip` | 可直接匯入 Overleaf 的四檔原始碼 ZIP（含 before 版本） |
 | `docs/dic4/REVISION_COMPARISON.md` | 修改前／後對照 |
-| `docs/dic4/references/FMPA 專題簡報解析.pdf` | 使用者提供的 FMPA 簡報解析原始 PDF（2 頁） |
-| `docs/dic4/references/A2Z outline example(1).pdf` | 使用者提供的 2020 A–Z SOP 大綱原始 PDF（1 頁） |
+| `FMPA 專題簡報解析.pdf`（Repo 根目錄） | 使用者提供的 FMPA 簡報解析原始 PDF（2 頁） |
+| `A2Z outline example(1).pdf`（Repo 根目錄） | 使用者提供的 2020 A–Z SOP 大綱原始 PDF（1 頁） |
 | `docs/midterm/public_test_results.json` | 論文所引用原專題的封存公開市場實驗數字（未重訓） |
 | `design.md`、`docs/dic3/DIC3_PROPOSAL_REFACTOR.md` | 原有設計與 DIC3 提案的唯讀參考副本（無產品程式） |
 | `openspec/changes/dic4-overleaf-paper/` | OpenSpec proposal / design / specs / tasks |

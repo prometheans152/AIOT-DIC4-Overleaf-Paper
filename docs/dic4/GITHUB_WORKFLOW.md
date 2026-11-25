@@ -13,7 +13,7 @@
 ## Design
 
 1. `paper/dic4/v1_before` 保存精簡對照初稿，`paper/dic4/v2_after` 保存修訂稿和真正由 Overleaf 編譯的 5 頁 PDF。
-2. `docs/dic4/references` 保存使用者提供的兩份原始 PDF，並紀錄 SHA-256。
+2. **Repository 根目錄**保存使用者提供的兩份原始 PDF；`docs/dic4/REFERENCES_CHECKSUMS.md` 紀錄 SHA-256。
 3. `docs/midterm/public_test_results.json` 是唯一與論文量化績效對應的封存依據；附原既有 `design.md`／`docs/dic3` 供查核。
 4. `openspec/changes/dic4-overleaf-paper` 記錄規格與驗收情境。
 5. GitHub 預設 `main` 是獨立專案，**不**合併回原產品 Repo。
