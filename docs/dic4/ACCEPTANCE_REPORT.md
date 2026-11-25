@@ -38,6 +38,10 @@
 
 ## GitHub 發佈與原 Repo
 
-DIC4 曾被誤放到 `FreshMarketPriceForecastAgent` 的 `dic4/overleaf-paper-20261125` 分支及 PR #2；使用者已澄清應**建立獨立 repo**。本 Repo 才是 DIC4 的正式版本來源；原 Repo 的 `main` 不因本次改動。最終 GitHub 推送／原 PR 收尾狀態需以線上確認為準。
+DIC4 曾被誤放到 `FreshMarketPriceForecastAgent` 的 `dic4/overleaf-paper-20261125` 分支及 PR #2；使用者已澄清應**建立獨立 repo**。
+
+- 2026-11-25 已新建 `prometheans152/AIOT-DIC4-Overleaf-Paper`（與原產品 Repo 完全獨立），以新 `main` 推送 **27 個檔案**，首個 Commit：`3a1750cca8cc8ee4d9afc7fcac8121e5191c6272`。
+- 已驗證 GitHub 遠端 `main` SHA 與本機相同；GitHub 線上檔案樹實際可見兩份 PDF。原檔大小與上方 SHA-256 均與本機來源一致。
+- 原產品 Repo 的 [PR #2](https://github.com/prometheans152/FreshMarketPriceForecastAgent/pull/2) **已關閉（Closed）且未合併**；原產品 `main` 未因此修改。舊 DIC4 分支仍保留作可還原備份，不再作本次交付來源。
 
 **Overleaf MCP 省略**：依使用者授權，直接以 COS Browser 編輯、匯入與編譯；不連接不必要的第三方 MCP。正式投稿、iLearning 課程繳交皆未執行。

@@ -25,7 +25,7 @@
 2. `python scripts/verify_dic4_paper.py` 重新比對原封存數據和引用。
 3. `openspec validate dic4-overleaf-paper --strict --no-interactive` 檢查。
 4. 以本 Repo 的 Git commit/push 發佈，查看 GitHub 檔案清單和原 PDF 尺寸／hash。
-5. 原 Repo 上誤建 PR #2 應關閉，不應合併進產品 `main`。
+5. 原 Repo 上誤建 PR #2 已 **Closed**，沒有合併進產品 `main`。舊分支暫保留作備份。
 6. 研究稿僅作課堂儲存與編輯；**不執行期刊、研討會、iLearning 正式投稿／繳交**。
 
 `git add -A` 若在其他產品工作樹中執行可能夾帶舊改動，因此僅在本獨立 Repo 操作。不得將 credentials、cookie、`.env`、私人資料或未公開模型放進 Git。

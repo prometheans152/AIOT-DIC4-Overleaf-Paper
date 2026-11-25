@@ -15,7 +15,7 @@
 ## 3. 工作流程
 - [x] 3.1 建立 DIC4 OpenSpec proposal、design、specs、tasks
 - [x] 3.2 CLI 嚴格驗證通過、保留原始測試輸出（4/4 artifacts；validate --strict exit 0）
-- [x] 3.3 原 GitHub PR #2 屬先前錯誤交付位置；本專題改為獨立 Repository `AIOT-DIC4-Overleaf-Paper`，不合併原產品 Repo
+- [x] 3.3 已在獨立 Repository `AIOT-DIC4-Overleaf-Paper` 的 `main` 發佈 27 個檔案；原產品 Repo PR #2 已關閉且未合併
 - [x] 3.4 使用者允許省略非必要 Overleaf MCP；COS Browser 已完成真正匯入／編譯，沒有虛報 MCP 連線
 
 ## 4. 交付
