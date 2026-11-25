@@ -1,0 +1,23 @@
+# Repository-local files and credentials
+.env
+.env.*
+!.env.example
+private/
+secrets/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+outputs/
+tmp/
+*.aux
+*.log
+*.bbl
+*.blg
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.toc
+*.nav
+*.snm
