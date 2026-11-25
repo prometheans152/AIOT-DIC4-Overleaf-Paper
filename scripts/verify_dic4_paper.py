@@ -76,6 +76,9 @@ def main() -> None:
     related = revised[related_start:next_section]
     assert r"\subsection{Article Summary Table}" in related, "missing Article Summary Table at end of Section II"
     assert r"\begin{tabularx}" in related and r"\end{tabularx}" in related
+    assert r"\documentclass[conference]{IEEEtran}" in revised, "paper must use two-column IEEE conference layout"
+    assert r"\begin{table*}[!t]" in related and r"\end{table*}" in related, "summary table must span two columns"
+    assert r"\begin{landscape}" not in revised, "do not rotate a page to fit the summary table"
     assert r"\FloatBarrier" in related, "table may float outside Section II"
     expected_columns = (
         "Ref. & Year & Problem & AI Method & Domain Knowledge & Dataset & Findings & Limitation"
@@ -87,6 +90,7 @@ def main() -> None:
         "location": "end of Section II, before Architecture and Methods",
         "columns": 8,
         "rows": 8,
+        "layout": "IEEEtran conference two-column; table* spans both columns",
         "citations_present": True,
     }
     print(json.dumps({"status": "STATIC_CHECK_PASS", "scope": "text/bibliography/frozen-numbers only", "results": results}, ensure_ascii=False, indent=2))

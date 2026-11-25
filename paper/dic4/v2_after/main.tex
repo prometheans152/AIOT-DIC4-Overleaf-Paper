@@ -1,21 +1,22 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=24mm]{geometry}
+\documentclass[conference]{IEEEtran}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,microtype,tabularx,placeins,pdflscape,caption}
+\usepackage{amsmath,amssymb,booktabs,array,graphicx,hyperref,microtype,tabularx,placeins}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 \title{From Public Market Averages to Shop-Price Scenarios:\\ A Reproducible 7- and 14-Day Forecasting-Agent Prototype}
-\author{Fresh Market Price Forecast Agent (FMPA) Project Team\\\small AIoT and Data Analytics Course Project}
-\date{DIC4 revised manuscript draft --- 25 November 2026}
+\author{\IEEEauthorblockN{Fresh Market Price Forecast Agent (FMPA) Project Team}
+\IEEEauthorblockA{AIoT and Data Analytics Course Project\\DIC4 working manuscript --- 25 November 2026}}
 \begin{document}
 \maketitle
 \begin{abstract}
 Public vegetable-price datasets provide historical signals but do not directly describe the price paid by a consumer at one shop. We present the design, evidence boundaries and frozen public-market evaluation of a domain-agent prototype that accepts today's shop price and returns qualified seven- and fourteen-calendar-day scenarios. A trained engine estimates relative changes of public-market averages; deterministic rules anchor those changes to an observed shop price, with an optional experimental adjustment from a comparable previous-week shop observation. On the original three-crop held-out public-market test, the seven-day and fourteen-day models attained direction macro-F1 of 0.4218 and 0.4169, below momentum baselines of 0.4226 and 0.4306. Their relative-return mean absolute errors, 0.0664 and 0.0983, also exceeded no-change baselines, 0.0436 and 0.0748. These results do not establish shop-price accuracy, improvement over simple rules or monetary benefits. We specify a prospective matched-shop evaluation and explicit failure semantics for the agent interface. The contribution is a traceable prototype and a falsifiable validation plan, not a verified saving recommendation.
 \end{abstract}
-\noindent\textbf{Keywords:} vegetable prices; retail; domain agents; time-series evaluation; reproducibility; AIoT.
+\begin{IEEEkeywords}
+vegetable prices, retail, domain agents, time-series evaluation, reproducibility, AIoT
+\end{IEEEkeywords}
 
 \section{Introduction}
 Consumers observe a product's price at a specific seller, but public data more often describe averages across markets. The Taichung municipal dataset reports public retail-market prices; it does not provide the identity and future selling prices of a private stall \cite{taichung84539}. Treating public-market and individual-shop prices as equal would overstate what a forecast measures. Unit differences, item quality, promotions and publication delays further complicate comparison.
@@ -32,16 +33,14 @@ A public market average is a distribution-level observation, not an individual t
 \subsection{Article Summary Table}
 Table~\ref{tab:article-summary} summarizes the research and product evidence underlying our gap analysis. Studies on wholesale prediction, retail market variability, and market information tools have different targets and cannot be ranked by comparing metrics across datasets. UNKNOWN marks details not confirmed by the inspected abstract, news report, repository, product page, or course presentation.
 
-\begin{landscape}
-\thispagestyle{plain}
+\begin{table*}[!t]
 \centering
-\captionsetup{hypcap=false}
-\captionof{table}{Article Summary Table: AI methods and domain knowledge in related work.}
+\caption{Article Summary Table: AI methods and domain knowledge in related work.}
 \label{tab:article-summary}
-\setlength{\tabcolsep}{3.2pt}
-\renewcommand{\arraystretch}{1.28}
-\fontsize{9.5}{11.3}\selectfont
-\begin{tabularx}{\linewidth}{@{}P{0.063\linewidth}P{0.046\linewidth}P{0.12\linewidth}P{0.114\linewidth}P{0.135\linewidth}P{0.145\linewidth}YY@{}}
+\setlength{\tabcolsep}{2.2pt}
+\renewcommand{\arraystretch}{1.14}
+\fontsize{7.6}{8.8}\selectfont
+\begin{tabularx}{\textwidth}{@{}P{0.060\textwidth}P{0.045\textwidth}P{0.115\textwidth}P{0.113\textwidth}P{0.131\textwidth}P{0.132\textwidth}YY@{}}
 \toprule
 Ref. & Year & Problem & AI Method & Domain Knowledge & Dataset & Findings & Limitation\\
 \midrule
@@ -55,9 +54,9 @@ R07 \cite{nchudm2025} & 2025 & Weather--price data mining & Decision-tree method
 H17 \cite{team172025} & 2025 & Five-day market forecasts & LightGBM & Wholesale trades, weather, supply & 2018--2024 wholesale/weather slides & Slides report $R^2$, RMSE and MAE & Slides only; not reproduced; different target\\
 \bottomrule
 \end{tabularx}
-\par\vspace{9pt}
-{\raggedright\fontsize{9.0}{10.5}\selectfont\emph{Evidence scope:} R01--R03: abstract/index; R04: news; R05--R06: product pages; R07: repository; H17: course slides. Missing details are not evidence of absent features.\par}
-\end{landscape}
+\par\vspace{5pt}
+{\raggedright\fontsize{7.5}{9}\selectfont\emph{Evidence scope:} R01--R03: abstract/index; R04: news; R05--R06: product pages; R07: repository; H17: course slides. Missing details are not evidence of absent features.\par}
+\end{table*}
 \FloatBarrier
 
 \section{Architecture and Methods}
@@ -122,7 +121,7 @@ The original three-crop experiment concerns cabbage, bok choy and sponge gourd u
 \caption{Same-sample held-out public-market comparison.}
 \label{tab:results}
 \small
-\begin{tabular}{@{}lrr@{}}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xrr@{}}
 \toprule
 Metric & 7-day RF & 14-day HGB\\
 \midrule
@@ -133,7 +132,7 @@ Model relative-return MAE & 0.0664 & 0.0983\\
 No-change relative-return MAE & \textbf{0.0436} & \textbf{0.0748}\\
 Up-class recall & 16/158 (10.1\%) & 23/268 (8.6\%)\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 At both horizons the selected model is worse than the simple momentum comparator in macro-F1, and worse than the unchanged-return comparator in MAE. The low up-class recall is particularly unsuitable for an unqualified rising-price warning. These MAEs measure \emph{relative public-market return}, not New Taiwan dollar error on shop transactions. The results neither demonstrate store-price accuracy nor justify claims of user savings. Using multiple markets to aggregate predicted returns would also need separate evaluation on an appropriate held-out scope.
@@ -153,6 +152,6 @@ We present a source-traceable domain-agent prototype for 7-/14-day shop-price \e
 
 \section*{Data and Reproducibility Statement}
 The original frozen results are stored in \texttt{docs/midterm/public\_test\_results.json} and discussed in \texttt{docs/dic3/DIC3\_PROPOSAL\_REFACTOR.md}. The system design is in \texttt{design.md}. This manuscript was prepared from those records without running a new training experiment. Raw personal store-price samples and credentials are not part of the publication package.
-\bibliographystyle{plain}
+\bibliographystyle{IEEEtran}
 \bibliography{references}
 \end{document}

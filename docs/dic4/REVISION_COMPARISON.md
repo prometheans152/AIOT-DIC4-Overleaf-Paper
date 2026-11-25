@@ -7,7 +7,7 @@
 | 文稿性質 | 可編譯的精簡設計提要 | 學術式研究問題、方法、結果、限制完整章節 |
 | Abstract | 簡述目標與數字 | 明示結果未勝基線、真店效益未驗證 |
 | Introduction | 泛談市場與店價不同 | 明確 RQ1 公開市場、RQ2 真店、RQ3 Agent 可靠性 |
-| Related Work | 只舉部分文獻 | 第二節最後加入 Article Summary Table（Ref./Year/Problem/AI Method/Domain Knowledge/Dataset/Findings/Limitation，共 8 筆）；保留文獻證據層級與交易層級限制，不跨資料集硬比 |
+| Related Work | 只舉部分文獻 | 第二節最後加入跨雙欄 Article Summary Table（Ref./Year/Problem/AI Method/Domain Knowledge/Dataset/Findings/Limitation，共 8 筆）；使用 IEEE Conference 雙欄、不用橫向頁；保留文獻證據層級，不跨資料集硬比 |
 | Method | 只寫 A 公式 | 資料時間、防洩漏、A/B 公式、相容性與 fallback |
 | Agent | 簡單描述 | 標示現存兩工具、Web B 不在 MCP、工具錯誤不可亂猜 |
 | Results | 數字與基線簡述 | 表格附 n／macro-F1／return MAE／上漲 recall、明示低於基線 |

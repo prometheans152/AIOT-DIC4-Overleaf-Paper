@@ -29,5 +29,5 @@ DIC4 工作包 SHALL 具備兩個可編輯 LaTeX 版本，含 `main.tex` 及同�
 #### Scenario: 查核章節與表格
 - **WHEN** 檢查修訂稿 LaTeX 與 Overleaf PDF
 - **THEN** 具備八欄、R01–R07 和 H17 共八筆相關研究或應用來源
-- **AND** 表格先於第三節，橫式頁面完整呈現，不與內文重疊
+- **AND** 使用 IEEEtran Conference 雙欄排版與 `table*`，表格在第二節結尾橫跨兩欄、先於第三節，不使用橫向頁面，且不與內文重疊
 - **AND** 引用都能在 BibTeX 中找到，未核實的方法、結果或限制標示其資訊來源。
